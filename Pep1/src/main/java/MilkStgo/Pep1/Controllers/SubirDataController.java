@@ -21,24 +21,32 @@ public class SubirDataController {
     @Autowired
     private SubirDataService subirData;
 
-    @GetMapping("/fileUpload")
-    public String main() {
-        return "fileUpload";
+    @GetMapping("/acopioUpload")
+    public String mainAcopio() {
+        return "acopioUpload";
     }
 
-    @PostMapping("/fileUpload")
-    public String upload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+    @PostMapping("/acopioUpload")
+    public String uploadAcopio(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         subirData.guardar(file);
         redirectAttributes.addFlashAttribute("mensaje", "¡Archivo cargado correctamente!");
-        subirData.leerCsv("Acopio.csv");
-        return "redirect:/fileUpload";
+        subirData.leerCsvAcopio(file.getOriginalFilename());
+        return "redirect:/acopioUpload";
     }
 
-    @GetMapping("/fileInformation")
-    public String listar(Model model) {
-        ArrayList<SubirDataEntity> datas = subirData.obtenerData();
-        model.addAttribute("datas", datas);
-        return "fileInformation";
+    @GetMapping("/porcentajeUpload")
+    public String mainPorcentaje() {
+        return "porcentajeUpload";
     }
+
+    @PostMapping("/porcentajeUpload")
+    public String uploadPorcentaje(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+        subirData.guardar(file);
+        redirectAttributes.addFlashAttribute("mensaje", "¡Archivo cargado correctamente!");
+        subirData.leerCsvAcopio(file.getOriginalFilename());
+        return "redirect:/porcentajeUpload";
+    }
+
+
 
 }

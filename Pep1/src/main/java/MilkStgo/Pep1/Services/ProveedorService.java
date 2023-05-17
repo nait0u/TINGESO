@@ -24,6 +24,7 @@ public class ProveedorService {
         return (ArrayList<ProveedorEntity>) proveedorRepository.findAll();
     }
 
+    /*
     public String obtenerCategoria(String codigo){
         return proveedorRepository.findCategory(codigo);
     }
@@ -31,4 +32,6 @@ public class ProveedorService {
     public ProveedorEntity findByCodigo(String codigo){
         return proveedorRepository.findByCodigo(codigo);
     }
+
+    */
 }

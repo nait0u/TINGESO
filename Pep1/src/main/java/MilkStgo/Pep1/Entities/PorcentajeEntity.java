@@ -21,6 +21,5 @@ public class PorcentajeEntity {
     private String cod_proveedor;
     private int grasa;
     private int solido;
-    private String fecha;
 
 }
