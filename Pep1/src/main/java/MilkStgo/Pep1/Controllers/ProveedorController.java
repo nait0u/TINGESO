@@ -22,19 +22,19 @@ public class ProveedorController {
     public String listar(Model model) {
         ArrayList<ProveedorEntity> proveedores = proveedorService.obtenerProveedores();
         model.addAttribute("proveedores", proveedores);
-        return "index";
+        return "VisualizarProveedores";
     }
 
     @GetMapping("/nuevo-proveedor")
     public String proveedor(){
-        return "nuevo-proveedor";
+        return "IngresarProveedor";
     }
     @PostMapping("/nuevo-proveedor")
     public String nuevoProveedor(@RequestParam("codigo") String codigo,
                                  @RequestParam("nombre") String nombre,
                                  @RequestParam("categoria") String categoria,
-                                 @RequestParam("retencion") String retencion){
+                                 @RequestParam("retencion") Boolean retencion){
         proveedorService.guardarProveedor(codigo, nombre, categoria, retencion);
-        return "redirect:/nuevo-proveedor";
+        return "redirect:/lista-proveedores";
     }
 }

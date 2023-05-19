@@ -1,10 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Agregar Proveedor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            color: #D889BC;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 10px;
+        }
+
+        .logo h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 36px;
+            color: #D889BC;
+        }
+
+        .mainclass {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #D889BC;
+        }
+
+        .formcontainer {
+            border: 1px solid #F878DA;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #F878DA;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #ff69b4;
+            color: #FAF4FA;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+<header class="header">
+    <a><img src="https://i.ibb.co/TPNdzc9/ovalo-1.png" alt="ovalo-1" border="0"</a>
+    <div class="logo">
+    </div>
+    <nav>
+    </nav>
+    <a class="btn" href="/"><button>Volver al menú principal</button></a>
+</header>
+<div class="mainclass">
+    <form th:action="@{/nuevo-proveedor}" method="POST">
+        <h1><b>Registrar nuevo Proveedor</b></h1>
+        <ul class="formcontainer">
+            <hr/>
 
+            <ul class="container">
+                <li>
+                <label><strong>Codigo</strong></label>
+                <input type="text" id="codigo" placeholder="Ingrese el código del proveedor" name="codigo"
+                       required>
+                </li>
+                <li>
+                <label><strong>Nombre</strong></label>
+                <input type="text" id="nombre" placeholder="Ingrese el nombre del proveedor" name="nombre"
+                       required>
+                </li>
+                <li>
+                <label><strong>Categoría</strong></label>
+                <select id="categoria" name="categoria" required>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </select>
+                </li>
+                <li>
+                <label><strong>Retención</strong></label>
+                <input type="radio" name="retencion" value="true" required> Sí
+                <input type="radio" name="retencion" value="true" required> No
+                </li>
+            </ul>
+            <button type="submit">Registrar Proveedor</button>
+        </ul>
+    </form>
+</div>
 </body>
 </html>

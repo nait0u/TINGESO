@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <title>MilkStgo - Inicio</title>
-    <link rel = "stylesheet" href= "../static/style.css" type="text/css" th:href="@{/css/style.css}">
+    <link rel = "stylesheet" href= "../static/style.css" type="text/css" th:href="@{/style.css}">
 </head>
 <body>
 <header>
@@ -14,10 +17,11 @@
 <div class="hero-image">
     <div class="container">
         <div class="hero-text">
-            <h2>Productos lacteos frescos</h2>
+            <h2>Productos lácteos frescos</h2>
             <p>Yogurt, mantequilla y quesos de calidad</p>
             <a href="/acopioUpload" class="cta-button">Subir Acopio</a>
             <a href="/porcentajeUpload" class="cta-button">Subir Porcentajes</a>
+            <a href="/lista-proveedores" class="cta-button">Consultar Proveedores</a>
 
         </div>
     </div>
@@ -25,8 +29,12 @@
 
 <div class="container">
     <h2>Sobre nosotros</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod ligula in elit facilisis, id consectetur odio tincidunt. Donec consectetur fermentum commodo. Nunc rutrum massa vel lobortis dapibus. Morbi pellentesque tincidunt augue ut bibendum.</p>
-    <p>Proin fringilla diam nec dapibus laoreet. Sed lacinia vestibulum efficitur. Duis maximus bibendum eros vitae venenatis. Integer bibendum eleifend dui, id vulputate velit auctor vitae. Mauris tincidunt convallis tellus, id sagittis arcu efficitur at. In hac habitasse platea dictumst.</p>
+    <p>Bienvenido a MilkStgo, una empresa con más de 40 años de experiencia en la producción de productos lácteos de calidad para el mercado nacional. Nos especializamos en la elaboración de yogurt, mantequilla y quesos, utilizando la materia prima más fresca y nutritiva: la leche.
+
+        En MilkStgo entendemos que la calidad de nuestros productos comienza con la selección de los mejores ingredientes. Por eso, establecemos relaciones sólidas con proveedores ubicados en diferentes zonas del país, quienes nos suministran la leche de primera calidad que necesitamos para la elaboración de nuestros productos.
+
+
+    </p>
 </div>
 </body>
 </html>

@@ -159,6 +159,7 @@ public class SubirDataService {
     public void eliminarDataPorcentaje(ArrayList<PorcentajeEntity> datas) {
         dataPorcentajesRepository.deleteAll(datas);
     }
+
 }
 
 

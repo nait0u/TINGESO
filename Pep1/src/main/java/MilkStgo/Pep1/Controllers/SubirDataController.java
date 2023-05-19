@@ -1,5 +1,7 @@
 package MilkStgo.Pep1.Controllers;
 
+import MilkStgo.Pep1.Entities.AcopioEntity;
+import MilkStgo.Pep1.Entities.PorcentajeEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,7 @@ public class SubirDataController {
 
     @GetMapping("/acopioUpload")
     public String mainAcopio() {
-        return "acopioUpload";
+        return "SubirArchivoAcopio";
     }
 
     @PostMapping("/acopioUpload")
@@ -36,17 +38,29 @@ public class SubirDataController {
 
     @GetMapping("/porcentajeUpload")
     public String mainPorcentaje() {
-        return "porcentajeUpload";
+        return "SubirArchivoPorcentaje";
     }
 
     @PostMapping("/porcentajeUpload")
     public String uploadPorcentaje(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         subirData.guardar(file);
         redirectAttributes.addFlashAttribute("mensaje", "¡Archivo cargado correctamente!");
-        subirData.leerCsvAcopio(file.getOriginalFilename());
+        subirData.leerCsvPorcentaje(file.getOriginalFilename());
         return "redirect:/porcentajeUpload";
     }
+    @GetMapping("/FileInformationAcopio")
+    public String listarAcopio(Model model) {
+        ArrayList<AcopioEntity> datas = subirData.obtenerDataAcopio();
+        model.addAttribute("datas", datas);
+        return "FileInformationAcopio";
+    }
 
+    @GetMapping("/FileInformationPorcentaje")
+    public String listarPorcentaje(Model model) {
+        ArrayList<PorcentajeEntity> datas = subirData.obtenerDataPorcentaje();
+        model.addAttribute("datas", datas);
+        return "FileInformationPorcentaje";
+    }
 
 
 }

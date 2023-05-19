@@ -32,7 +32,7 @@ h1 {
 }
 
 .hero-image {
-    background-image: url('https://i.ibb.co/rMhDMcx/pattern-leaves-4-1-7-0-0-65-2-faf5fa-f0ade4.png');
+
     background-size: cover;
     background-position: center;
     height: 400px;
@@ -60,9 +60,12 @@ h1 {
 .cta-button {
     display: inline-block;
     padding: 12px 24px;
-    background-color: #F0ADE4;
+    background-color: #ff69b4;
     color: #fff;
     font-size: 20px;
     text-decoration: none;
     border-radius: 4px;
+}
+.buttons-container {
+    text-align: center;
 }
