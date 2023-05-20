@@ -1,10 +1,15 @@
 package MilkStgo.Pep1.Entities;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.*;
-import org.jetbrains.annotations.NotNull;
+
+import javax.persistence.*;
+
+
+
+
 
 @Entity
 @Table(name = "acopio")
