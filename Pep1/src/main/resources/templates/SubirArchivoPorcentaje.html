@@ -15,6 +15,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
+<style>
+    body {
+        background-color: #FAF4FA;
+        color: #D889BC;
+        font-family: Calibri, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background-color: #FAF4FA;
+        padding: 10px;
+        text-align: center;
+    }
+</style>
 <body>
 <header class="header">
     <a><img src="https://i.ibb.co/TPNdzc9/ovalo-1.png" alt="ovalo-1" border="0"></a>
@@ -26,28 +41,31 @@
     <a class="cta-button" href="/">Volver a Home</a>
     <a class="cta-button" href="/FileInformationPorcentaje">Ver el ultimo CSV cargado</a>
 </header>
-<div class = "f">
+<body2>
     <div class="container">
-        <h1><b>Cargar el archivo de datos</b></h1>
+        <div class="logo">
+            <h1><b>Cargar el archivo de datos</b></h1>
+        </div>
         <form th:action="@{/porcentajeUpload}" method="POST" enctype="multipart/form-data">
             <br>
             <input type="file" class="form-control" name="file" accept = ".csv">
             <br>
-            <input class = "btn btn-primary"
+            <input class = "cta-button"
                    type="submit" value="Cargar el archivo a la Base de Datos">
         </form>
         <br>
         <u><b>
             <h2 th:if="${mensaje}" th:text="${mensaje}"></h2>
-            <h2 th:unless="${mensaje}">No se ha cargado ningun archivo.</h2>
+            <h2 th:unless="${mensaje}">No se ha cargado ningún archivo.</h2>
         </b></u>
     </div>
-</div>
+
 <br>
 <hr>
 
-<div class = "form1">
+
     <h5><b>Recuerde que debe cargar un archivo Excel de extensión .csv!</b></h5>
+</body2>
 </div>
 </body>
 </html>

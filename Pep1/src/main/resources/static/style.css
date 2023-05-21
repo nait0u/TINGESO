@@ -14,8 +14,23 @@ body {
     padding: 20px;
 }
 
-header {
+body2 {
+    background-color: #FAF4FA;
+    color: #D889BC;
+    font-family: Calibri, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
+.header2 {
+    background-color: #FAF4FA;
+    padding: 10px;
+    text-align: center;
+}
+
+header {
+    background-color: #FAF4FA;
+    color: #D889BC;
     padding: 0px;
     text-align: center;
 }
@@ -35,13 +50,31 @@ header img {
 }
 
 h1 {
-
+    background-color: #FAF4FA;
     color: #D889BC;
     font-size: 36px;
     margin-bottom: 20px;
 
 }
+.content-table {
+    background-color: #FAF4FA;
+    color: #D889BC;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
 
+.content-table th {
+    background-color: #f9f9f9;
+    color: #D889BC;
+    padding: 10px;
+    text-align: left;
+}
+
+.content-table td {
+    border: 1px solid #F878DA;
+    padding: 10px;
+}
 .hero-image {
 
     background-size: cover;
@@ -57,7 +90,7 @@ h1 {
 }
 
 .hero-text h2 {
-    font-size: 48px;
+    font-size: 24px;
     color: #D889BC;
     margin-bottom: 20px;
 }
