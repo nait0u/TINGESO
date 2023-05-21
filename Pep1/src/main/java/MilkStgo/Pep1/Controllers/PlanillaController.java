@@ -33,7 +33,7 @@ public class PlanillaController {
         else{
             model.addAttribute("proveedores", proveedores);
         }
-        return "planillaSelect";
+        return "SeleccionPlanilla";
     }
 
     @GetMapping("/planillaGenerate")
@@ -47,6 +47,6 @@ public class PlanillaController {
         else{
             model.addAttribute("planilla", planilla);
         }
-        return "planillaShow";
+        return "GenerarPlanilla";
     }
 }

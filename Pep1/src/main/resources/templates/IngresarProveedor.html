@@ -13,7 +13,7 @@
         body {
             background-color: #f9f9f9;
             color: #D889BC;
-            font-family: Arial, sans-serif;
+            font-family: Calibri, sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -85,22 +85,24 @@
     </div>
     <nav>
     </nav>
-    <a class="btn" href="/"><button>Volver al menú principal</button></a>
+    <a class="cta-button" href="/"><button>Volver al menú principal</button></a>
 </header>
 <div class="mainclass">
     <form th:action="@{/nuevo-proveedor}" method="POST">
+        <div class="logo">
         <h1><b>Registrar nuevo Proveedor</b></h1>
+        </div>
         <ul class="formcontainer">
             <hr/>
 
             <ul class="container">
                 <li>
-                <label><strong>Codigo</strong></label>
+                <label><strong>Código</strong></label>
                 <input type="text" id="codigo" placeholder="Ingrese el código del proveedor" name="codigo"
                        required>
                 </li>
                 <li>
-                <label><strong>Nombre</strong></label>
+                <label><strong>Nombre Proveedor</strong></label>
                 <input type="text" id="nombre" placeholder="Ingrese el nombre del proveedor" name="nombre"
                        required>
                 </li>

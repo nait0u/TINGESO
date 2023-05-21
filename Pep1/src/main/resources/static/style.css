@@ -2,19 +2,20 @@
 body {
     background-color: #FAF4FA;
     color: #D889BC;
-    font-family: Arial, sans-serif;
+    font-family: Calibri, sans-serif;
     margin: 0;
     padding: 0;
 }
 
 .container {
+
     max-width: 960px;
     margin: 0 auto;
     padding: 20px;
 }
 
 header {
-    background-color: #FAF4FA;
+
     padding: 0px;
     text-align: center;
 }
@@ -23,8 +24,18 @@ header img {
     max-width: 600px;
     height: auto;
 }
+.logo {
+    margin-bottom: 10px;
+}
+
+.logo h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    color: #D889BC;
+}
 
 h1 {
+
     color: #D889BC;
     font-size: 36px;
     margin-bottom: 20px;
