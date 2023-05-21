@@ -21,8 +21,10 @@ public class PorcentajeEntity {
     @NotNull
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer ID_PORCENTAJE;
+    private Integer ID_archivo;
     private String cod_proveedor;
     private int grasa;
     private int solido;
+    private String fecha;
 
 }

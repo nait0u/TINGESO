@@ -3,10 +3,13 @@ package MilkStgo.Pep1.Services;
 import MilkStgo.Pep1.Entities.AcopioEntity;
 import MilkStgo.Pep1.Repositories.AcopioRepository;
 import MilkStgo.Pep1.Entities.PorcentajeEntity;
-import MilkStgo.Pep1.Repositories.PorcentajesRepository;
+import MilkStgo.Pep1.Repositories.PorcentajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,7 +30,10 @@ public class SubirDataService {
     private AcopioRepository dataAcopioRepository;
 
     @Autowired
-    private PorcentajesRepository dataPorcentajesRepository;
+    private PorcentajeRepository dataPorcentajeRepository;
+
+    Integer IDArchivoAcopio =1;
+    Integer IDArchivoPorcentaje =1;
 
     private final Logger logg = LoggerFactory.getLogger(SubirDataService.class);
 
@@ -36,7 +42,7 @@ public class SubirDataService {
     }
 
     public ArrayList<PorcentajeEntity> obtenerDataPorcentaje() {
-        return (ArrayList<PorcentajeEntity>) dataPorcentajesRepository.findAll();
+        return (ArrayList<PorcentajeEntity>) dataPorcentajeRepository.findAll();
     }
 
     @Generated
@@ -60,10 +66,9 @@ public class SubirDataService {
     }
 
     @Generated
-    public void leerCsvAcopio(String direccion) {
+    public boolean leerCsvAcopio(String direccion) {
         String texto = "";
         BufferedReader bf = null;
-        //dataAcopioRepository.deleteAll();
         try {
             bf = new BufferedReader(new FileReader(direccion));
             String temp = "";
@@ -73,12 +78,14 @@ public class SubirDataService {
                 if (count == 1) {
                     count = 0;
                 } else {
-                    guardarDataDBAcopio(bfRead.split(";")[0], bfRead.split(";")[1], bfRead.split(";")[2], bfRead.split(";")[3]);
+                    guardarDataDBAcopio(IDArchivoAcopio, bfRead.split(";")[0], bfRead.split(";")[1], bfRead.split(";")[2], Integer.parseInt(bfRead.split(";")[3]));
                     temp = temp + "\n" + bfRead;
                 }
             }
             texto = temp;
             System.out.println("Archivo leido exitosamente");
+            IDArchivoAcopio++;
+            return true;
         } catch (Exception e) {
             System.err.println("No se encontro el archivo");
         } finally {
@@ -90,14 +97,16 @@ public class SubirDataService {
                 }
             }
         }
+        return false;
     }
 
     public void guardarDataAcopio(AcopioEntity data) {
         dataAcopioRepository.save(data);
     }
 
-    public void guardarDataDBAcopio(String fecha, String turno, String proveedor, String kls_leche) {
+    public void guardarDataDBAcopio(Integer ID_Archivo, String fecha, String turno, String proveedor, Integer kls_leche) {
         AcopioEntity newData = new AcopioEntity();
+        newData.setIDarchivo(ID_Archivo);
         newData.setFecha(fecha);
         newData.setTurno(turno);
         newData.setProveedor(proveedor);
@@ -105,14 +114,10 @@ public class SubirDataService {
         guardarDataAcopio(newData);
     }
 
-    public void eliminarDataAcopio(ArrayList<AcopioEntity> datas) {
-        dataAcopioRepository.deleteAll(datas);
-    }
-
     //##########################################################################################
 
     @Generated
-    public void leerCsvPorcentaje(String direccion) {
+    public boolean leerCsvPorcentaje(String direccion) {
         String texto = "";
         BufferedReader bf = null;
         //dataAcopioRepository.deleteAll();
@@ -125,12 +130,14 @@ public class SubirDataService {
                 if (count == 1) {
                     count = 0;
                 } else {
-                    guardarDataDBPorcentaje(bfRead.split(";")[0], Integer.parseInt(bfRead.split(";")[1]), Integer.parseInt(bfRead.split(";")[2]));
+                    guardarDataDBPorcentaje(IDArchivoPorcentaje,bfRead.split(";")[0], Integer.parseInt(bfRead.split(";")[1]), Integer.parseInt(bfRead.split(";")[2]), LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")));
                     temp = temp + "\n" + bfRead;
                 }
             }
             texto = temp;
             System.out.println("Archivo leido exitosamente");
+            IDArchivoPorcentaje++;
+            return true;
         } catch (Exception e) {
             System.err.println("No se encontro el archivo");
         } finally {
@@ -142,22 +149,21 @@ public class SubirDataService {
                 }
             }
         }
+        return false;
     }
 
     public void guardarDataPorcentaje(PorcentajeEntity data) {
-        dataPorcentajesRepository.save(data);
+        dataPorcentajeRepository.save(data);
     }
 
-    public void guardarDataDBPorcentaje(String cod_proveedor, int grasa, int solido) {
+    public void guardarDataDBPorcentaje(Integer Id_Archivo, String cod_proveedor, int grasa, int solido, String fecha) {
         PorcentajeEntity newData = new PorcentajeEntity();
+        newData.setID_archivo(Id_Archivo);
         newData.setCod_proveedor(cod_proveedor);
         newData.setGrasa(grasa);
         newData.setSolido(solido);
+        newData.setFecha(fecha);
         guardarDataPorcentaje(newData);
-    }
-
-    public void eliminarDataPorcentaje(ArrayList<PorcentajeEntity> datas) {
-        dataPorcentajesRepository.deleteAll(datas);
     }
 
 }

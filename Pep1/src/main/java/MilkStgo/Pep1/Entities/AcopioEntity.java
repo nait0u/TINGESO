@@ -7,10 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-
-
-
-
 @Entity
 @Table(name = "acopio")
 @NoArgsConstructor
@@ -22,10 +18,10 @@ public class AcopioEntity {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IDACOPIO;
-
+    private Integer IDarchivo;
     private String fecha;
     private String turno;
     private String proveedor;
-    private String kls_leche;
+    private Integer kls_leche;
 
 }
