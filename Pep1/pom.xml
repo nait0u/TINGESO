@@ -19,6 +19,7 @@
 			src/main/java/MilkStgo/Pep1/Controllers/*,
 			src/main/java/MilkStgo/Pep1/Entities/*,
 			src/main/java/MilkStgo/Pep1/Repositories/*
+
 		</sonar.exclusions>
 	</properties>
 	<dependencies>
