@@ -1,56 +1,54 @@
 pipeline{
     agent any
-    tools{
+    tools {
         maven "maven"
     }
     stages{
-        stage("Build JAR File"){
+        stage(BUILD JAR FILE){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/PodssilDev/ayudantias-tingeso-mingeso']])
-                dir("pep1"){
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nait0u/TINGESO']])
+                dir("Pep1"){
                     sh "mvn clean install"
                 }
             }
         }
         stage("Test"){
             steps{
-                dir("pep1"){
+                dir("Pep1"){
                     sh "mvn test"
                 }
             }
         }
         stage("SonarQube Analysis"){
             steps{
-                dir("pep1"){
-                    sh "mvn sonar:sonar -Dsonar.projectKey=pep1 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_fc56b1ba154bd3b0bf2aaa644210b01404548520"
+                dir("Pep1"){
+                    sh "mvn clean verify sonar:sonar  -Dsonar.projectKey=pep1 -Dsonar.host.url=http://localhost:9000  -Dsonar.login=sqp_4711e2751e5345997677cf901dc199688af57620"
                 }
             }
+            
         }
         stage("Build Docker Image"){
             steps{
-                dir("pep1"){
-                    sh "docker build -t johnserrano159/proyecto_docker ."
+                dir("Pep1"){
+                    sh "docker build -t nait0u/pep1 ."
                 }
             }
         }
-        stage("Push Docker Image"){
+        stage ("Push Docker Image"){
             steps{
-                dir("pep1"){
+                dir("Pep1"){
                     withCredentials([string(credentialsId: 'dckrhubpassword', variable: 'dckpass')]){
-                        sh "docker login -u johnserrano159 -p ${dckpass}"
-                        
+                        sh "docker login -u nait0u -p ${dckpass}"
                     }
-                    sh "docker push johnserrano159/proyecto_docker"
-                    
+                    sh "docker push nait0u/pep1"
                 }
-                
             }
         }
-    }
-    post{
-        always{
-            dir("pep1"){
-                sh "docker logout"
+        post{
+            always{
+                dir("Pep1"){
+                    sh "docker logout"
+                }
             }
         }
     }
